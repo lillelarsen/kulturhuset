@@ -1,0 +1,28 @@
+<% include partials/head.ejs %>
+<% include partials/header.ejs %>
+<% include partials/navigation.ejs %>
+<main tabindex="0" role="main" class="main" id="maincontent">
+    <article class="singleEventListItem">
+        <div class="singleItemOrder">
+            <h3>Bestil billetter</h3>
+            <form action="/bestilling" class="singleItemOrder" method="POST">
+                <input type="hidden" name="event">
+                <input type="hidden" name="tickets">
+                <label for="email">Din email</label>
+                <input type="email" id="email" name="email" placeholder="email" class="inputFrontend">
+                <label for="phone">Dit telefonnummer</label>
+                <input type="text" id="phone" name="phone" placeholder="Telefon" class="inputFrontend">
+                <button type="submit" class="buttonFrontendSearch">Bestil</button>
+            </form>
+        </div>
+    </article>
+    <script>
+        const form = document.querySelector('.singleItemOrder');
+        const url = new URLSearchParams(window.location.search);
+        form.querySelector('input[name=event]').value = url.get('event');
+        form.querySelector('input[name=tickets]').value = url.get('tickets');
+    </script>
+</main>
+<% include partials/footer.ejs %>
+<% include partials/after-footer.ejs %>
+

@@ -1,0 +1,45 @@
+<% include partials/head.ejs %>
+<% include partials/header.ejs %>
+<% include partials/navigation.ejs %>
+<main tabindex="0" role="main" class="main" id="maincontent">
+    <article class="singleEventListItem">
+        <div class="singleItemInfo">
+            <h2 class="singleItemName"><%= event.name %></h2>
+            <img class="singleItemImage" src="/media/<%= event.image %>" alt="">
+            <p class="singleItemPrice">Pris: <%= event.price %> DKK</p>
+            <p class="singleItemCategory">Kategori: <span class="categoryOfItem"><%= event.category %></span></p>
+            <p class="singleItemDate"><span class="startDate"><%= momento(event.starts).format('LLLL'); %></span> - <span class="endDate"><%= momento(event.ends).format('LLLL'); %></span></p>
+            <p class="singleItemDescription">Beskrivelse: <%= event.description %></p>
+        </div>
+        <div class="singleItemOrder">
+            <h3>Bestil billetter</h3>
+            <form action="" class="singleItemOrder">
+                <input type="hidden" name="eventId" value="<%= event.id %>">
+                <label for="quantity">Antal</label>
+                <select name="antalBilletter" id="quantity" class="inputFrontend">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button type="submit" class="buttonFrontendSearch orderButton">Bestil</button>
+            </form>
+        </div>
+    </article>
+    <script>
+    const ticketForm = document.querySelector('.singleItemOrder');
+
+    ticketForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = window.location.href.split('/').pop();
+        const tickets = ticketForm.querySelector('select').value;
+        window.location.href = `/bestilling?event=${id}&tickets=${tickets}`;
+    })
+    
+    </script>
+	
+</main>
+<% include partials/footer.ejs %>
+<% include partials/after-footer.ejs %>
+

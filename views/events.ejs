@@ -1,0 +1,108 @@
+<% include partials/head.ejs %>
+<% include partials/header.ejs %>
+<% include partials/navigation.ejs %>
+<main tabindex="0" role="main" class="main" id="maincontent">
+	<div class="searchContainer">
+		<label for="myInput">Søg arrangement 
+		<input type="text" class="searchInputs" id="myInput" onkeyup="filterSearch()" placeholder="Søg arrangementets titel.." title="Type in a name"></label>
+		
+		<label for="category">Vælg type 
+		<select name="categories" class="searchSelect" id="category" onchange="filterCategory()">
+				<option value="" disabled selected hidden>Vælg</option>
+				<option value="">Alle</option>
+			<% categories.forEach(category => { %> 
+				<option value="<%= category.name %>"><%= category.name %></option>
+			<% }); %>
+		</select></label>
+
+		<label for="myInput">Vælg dato 
+		<input type="text" class="searchInputs" id="pickDate" placeholder="Vælg dato.." onchange="filterDate()"></label>
+
+		<a href="/arrangementer" class="buttonFrontendSearch">Nulstil</a>
+	</div>
+	<div class="itemContainer">
+	<% events.forEach(event => { %> 
+		<article class="eventListItem">
+			<img class="itemImage" src="./media/<%= event.image %>" alt="">
+			<h2 class="itemName"><%= event.name %></h2>
+			<p class="itemPrice">Pris: <%= event.price %> DKK</p>
+			<p class="itemCategory">Kategori: <span class="categoryOfItem"><%= event.category %></span></p>
+			<p class="itemDate"><span class="startDate"><%= momento(event.starts).format('LLLL'); %></span> - <span class="endDate"><%= momento(event.ends).format('LLLL'); %></span></p>
+			<a href="/arrangementer/<%= event.id %>" class="buttonFrontend">Billetter</a>
+		</article>
+	<% }); %>
+	</div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/da.js"></script>
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+<script>
+flatpickr.l10ns.default.firstDayOfWeek = 1;
+flatpickr("#pickDate", {
+    enableTime: false,
+    dateFormat: "Y-m-d",
+    minDate: "today",
+    "locale": "da",
+    time_24hr: true
+});
+</script>
+<script>
+function filterDate() {
+	moment.locale('da');
+	let input, filter, ul, li, a, i, txtValue;
+    input = document.querySelector("#pickDate");
+	filter = moment(input.value).format("YY MMM Do").toUpperCase();
+    ul = document.querySelector(".itemContainer");
+	li = ul.querySelectorAll(".eventListItem");
+	
+    for (i = 0; i < li.length; i++) {
+		eventStart = li[i].querySelector(".startDate").innerText;
+		eventStartConvert = moment(eventStart, "LLLL").format("YY MMM Do").toUpperCase();
+				
+        if (eventStartConvert.indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+function filterSearch() {
+	let input, filter, ul, li, a, i, txtValue;
+    input = document.querySelector("#myInput");
+    filter = input.value.toUpperCase();
+    ul = document.querySelector(".itemContainer");
+	li = ul.querySelectorAll(".eventListItem");
+	
+    for (i = 0; i < li.length; i++) {
+        a = li[i].querySelector(".itemName");
+        txtValue = a.innerHTML;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+function filterCategory() {
+	let input, filter, ul, li, a, i, txtValue;
+    input = document.querySelector("#category");
+    filter = input.value.toUpperCase();
+    ul = document.querySelector(".itemContainer");
+	li = ul.querySelectorAll(".eventListItem");
+	
+    for (i = 0; i < li.length; i++) {
+        a = li[i].querySelector(".categoryOfItem");
+        txtValue = a.innerHTML;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+<% include partials/footer.ejs %>
+<% include partials/after-footer.ejs %>

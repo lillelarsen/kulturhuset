@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
+
+html {
+    font-family: 'PT Sans Narrow', sans-serif;
+    background-color: var(--light-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main:focus, footer:focus {
+    outline: none;
+}
+/*-- frontend area --*/
+.siteHeader {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 10em;
+    background-color: var(--primary-color);
+}
+.primaryNavigation {
+    height: 3em;
+    background-color: var(--secondary-color);
+    overflow: hidden;
+}
+.siteFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 5em;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+/*-- admin area --*/
+#adminWrapper {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 20px minmax(15em, auto);
+}
+
+.adminSiteHeader {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: orange;
+}
+
+.adminPrimaryNavigation {
+    grid-column: 1/2;
+    grid-row: 2/-1;
+    background-color: greenyellow;
+}
+
+.adminPage {
+    grid-column: 2/-1;
+    grid-row: 2/-1;
+    padding: 2em;
+}

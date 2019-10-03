@@ -1,0 +1,143 @@
+#jumpToContent {
+    display: none;
+}
+#jumpToContent:focus, #jumpToContent:active {
+    display: block;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+/*-- frontend area --*/
+.siteName {
+    text-decoration: none;
+    font-size: 2em;
+    color: var(--dark-color);
+}
+
+.searchSelect,
+.searchInputs {
+    border-color: var(--green-color);
+}
+.navItem {
+    display: inline-block;
+}
+.navItemLink {
+    color: var(--dark-color);
+}
+.buttonFrontend,
+.addRows {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 0.4em;
+    padding: 0.5em 2em;
+    width: 10em;
+    height: 2.5em;
+    border: 0 solid var(--dark-color);
+    border-radius:0;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    -ms-border-radius:0;
+    -o-border-radius:0;
+}
+.buttonFrontend:hover {
+    border: 0 solid var(--green-color);
+    background-color: var(--green-color);
+    color: var(--dark-color);
+}
+.buttonFrontendSearch {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 0.4em;
+    padding: 0.5em 2em;
+    width: 10em;
+    border: 1px solid var(--green-color);
+    border-radius:0;
+    background-color: var(--green-color);
+    color: var(--dark-color);
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    -ms-border-radius:0;
+    -o-border-radius:0;
+}
+.buttonFrontendSearch:hover {
+    border: 1px solid var(--green-color);
+    background-color: var(--dark-color);
+    color: var(--green-color);
+}
+.inputFrontend {
+    border: 2px solid var(--green-color);
+    padding-left: 0.4em;
+}
+/*-- admin area --*/
+.errorMessageShow {
+    max-width: 400px;
+    background-color: red;
+    color: #fff;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    padding: 0.5em 2em;
+}
+.errorInput {
+    border: red solid 2px;
+}
+.successMessageShow {
+    max-width: 400px;
+    background-color: greenyellow;
+    color: #fff;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    padding: 0.5em 2em;
+}
+.successInput {
+    border: greenyellow solid 2px;
+}
+img {
+    width: 2em;
+    height: auto;
+}
+.fa-trash-alt {
+    cursor: pointer;
+    color: red;
+}
+
+.fa-edit {
+    cursor: pointer;
+    color: black;
+}
+.theatreMap {
+    background-color: black;
+    padding: 0.3em;
+    min-width: 300px;
+    min-height: 300px;
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    margin: 0.3em;
+    min-width: 300px;
+    min-height: 30px;
+}
+.seat {
+    background-color: green;
+    margin: 0.3em;
+    width: 20px;
+    height: 20px;
+}
+.theatreFront {
+    text-align: center;
+    background-color: #555;
+}

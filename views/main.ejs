@@ -1,0 +1,17 @@
+<% include partials/head.ejs %>
+<% include partials/header.ejs %>
+<% include partials/navigation.ejs %>
+<main tabindex="0" role="main" class="main" id="maincontent">
+	<% events.forEach(event => { %> 
+		<article class="eventListItem">
+			<h2><%= event.name %></h2>
+			<img src="./media/<%= event.image %>" alt="">
+			<p>Pris: <%= event.price %> DKK</p>
+			<p>Kategori: <%= event.category %></p>
+			<p><%= momento(event.starts).format('LLLL'); %> - <%= momento(event.ends).format('LLLL'); %></p>
+			<a href="/arrangementer/<%= event.id %>" class="buttonFrontend">Billetter</a>
+		</article>
+	<% }); %>
+</main>
+<% include partials/footer.ejs %>
+<% include partials/after-footer.ejs %>

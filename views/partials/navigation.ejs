@@ -1,0 +1,9 @@
+<nav class="primaryNavigation" role="navigation">
+	<ul id="mySidenav" class="mySidenav">
+	
+	<% menus.forEach(menu => { %> 
+		<li class="navItem"><a class="navItemLink" href="/<%= menu.fk_category %>"><%= menu.name %></a></li>
+	<% }); %>
+	
+	</ul>
+</nav>

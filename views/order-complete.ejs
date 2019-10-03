@@ -1,0 +1,17 @@
+<% include partials/head.ejs %>
+<% include partials/header.ejs %>
+<% include partials/navigation.ejs %>
+<main tabindex="0" role="main" class="main" id="maincontent">
+    <article class="singleEventListItem">
+        <% tickets.forEach(ticket => { %> 
+            <div class="singleItemOrder">
+                <h2 class="singleItemName"><%= ticket.fk_order %></h2>
+                <p class="singleItemPrice">Pris: <%= ticket.fk_event_id %> DKK</p>
+                <p class="singleItemCategory">Kategori: <span class="categoryOfItem"><%= ticket.id %></span></p>
+            </div>
+        <% }); %>
+    </article>	
+</main>
+<% include partials/footer.ejs %>
+<% include partials/after-footer.ejs %>
+
